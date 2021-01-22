@@ -4,7 +4,7 @@
 
 # duplicate symbol
 
-![image-20210122092550152](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210122092550152.png)
+![image-20210122092550152](https://github.com/hhhhhh11/image-folder/blob/main/image/image-20210122092550152.png)
 
 
 ```
@@ -81,8 +81,16 @@ ninja: build stopped: subcommand failed.
 >            ^
 > 符号:   方法 findViewById(int)
 > 位置: 类 MainActivity
+>
+> ![image-20210122100451134](https://github.com/hhhhhh11/image-folder/blob/main/image/image-20210122100451134.png)
 
 ```
-解决方法：
+解决方法：import class
 ```
+
+# error: use of undeclared identifier 'NDK_GetRfidType'
+
+> E:\study\NLLearn\app\src\main\jni\posNdk.c:433:27: error: use of undeclared identifier 'NDK_GetRfidType'
+>
+> 注释掉
 
