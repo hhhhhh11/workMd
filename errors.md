@@ -94,3 +94,20 @@ ninja: build stopped: subcommand failed.
 >
 > 注释掉
 
+# Execution failed for task ':processDebugResources'.
+> Could not resolve all files for configuration ':_internal_aapt2_binary'.
+> Cannot resolve external dependency com.android.tools.build:aapt2:4.1.1-6503028 because no repositories are defined.
+> Required by:
+>  	project :
+>
+> 解决方法：添加
+>
+> ```
+> allprojects {
+>     repositories {
+>         google()
+>     }
+> }
+> ```
+>
+> ![image-20210122114730335](https://github.com/hhhhhh11/image-folder/blob/main/image/image-20210122114730335.png)
