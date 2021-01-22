@@ -111,3 +111,9 @@ ninja: build stopped: subcommand failed.
 > ```
 >
 > ![image-20210122114730335](https://github.com/hhhhhh11/image-folder/blob/main/image/image-20210122114730335.png)
+
+# Design editor is unavailable until after a successful project sync
+
+> 安卓布文件显示异常
+>
+> 重启AS
