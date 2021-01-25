@@ -36,6 +36,11 @@
 > str1 -- 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针。
 > str2 -- 指向要复制的源数组，类型强制转换为 void* 指针。
 > n -- 要被复制的字节数。
+>  char src[] = "***";
+>  char dest[] = "abcdefg";
+>  printf("使用 memcpy 前: %s\n", dest);
+>  memcpy(dest, src, strlen(src));
+>  printf("使用 memcpy 后: %s\n", dest);
 > ```
 
 # Java
@@ -74,7 +79,15 @@ public static void arraycopy(
                              )
 ```
 
+## 重载(Overload)和重写(Override)
 
+> https://www.runoob.com/java/java-override-overload.html
+>
+> 方法的重写(Overriding)和重载(Overloading)是java多态性的不同表现，重写是父类与子类之间多态性的一种表现，重载可以理解成多态的具体表现形式。
+>
+> - (1)方法重载是一个类中定义了多个方法名相同,而他们的参数的数量不同或数量相同而类型和次序不同,则称为方法的重载(Overloading)。
+> - (2)方法重写是在子类存在方法与父类的方法的名字相同,而且参数的个数与类型一样,返回值也一样的方法,就称为重写(Overriding)。
+> - (3)方法重载是一个类的多态性表现,而方法重写是子类与父类的一种多态性表现。
 
 # git
 
