@@ -43,6 +43,18 @@
 >  printf("使用 memcpy 后: %s\n", dest);
 > ```
 
+## 值传递、指针传递、引用传递（C++）
+
+https://blog.csdn.net/u013550000/article/details/80954151
+
+https://www.cnblogs.com/sum-41/p/10799555.html
+
+| 传递方式 | 函数定义    | 函数调用 | 函数内对a修改的影响 |
+| :------- | :---------- | :------- | :------------------ |
+| 值传递   | fun(int a)  | fun(x)   | 外部x不变           |
+| 指针传递 | fun(int *a) | fun(&x)  | 外部x同步更改       |
+| 引用传递 | fun(int &a) | fun(x)   | 外部x同步更改       |
+
 # Java
 
 ## 八种基本类型
@@ -97,4 +109,3 @@ public static void arraycopy(
 >
 > Github使用公钥和私钥https://blog.csdn.net/memory_nothing/article/details/94908152
 
-> 
