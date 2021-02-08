@@ -55,6 +55,10 @@ https://www.cnblogs.com/sum-41/p/10799555.html
 | 指针传递 | fun(int *a) | fun(&x)  | 外部x同步更改       |
 | 引用传递 | fun(int &a) | fun(x)   | 外部x同步更改       |
 
+## C语言中Hex转ASCII函数
+
+https://blog.csdn.net/u010761559/article/details/83508834
+
 # Java
 
 ## 八种基本类型
@@ -101,6 +105,21 @@ public static void arraycopy(
 > - (2)方法重写是在子类存在方法与父类的方法的名字相同,而且参数的个数与类型一样,返回值也一样的方法,就称为重写(Overriding)。
 > - (3)方法重载是一个类的多态性表现,而方法重写是子类与父类的一种多态性表现。
 
+## String、StringBuffer与StringBuilder的区别
+
+| String                                                       | StringBuffer                                                 | StringBuilder    |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------- |
+| String的值是不可变的，这就导致每次对String的操作都会生成新的String对象，不仅效率低下，而且浪费大量优先的内存空间 | StringBuffer是可变类，和线程安全的字符串操作类，任何对它指向的字符串的操作都不会产生新的对象。每个StringBuffer对象都有一定的缓冲区容量，当字符串大小没有超过容量时，不会分配新的容量，当字符串大小超过容量时，会自动增加容量 | 可变类，速度更快 |
+| 不可变                                                       | 可变                                                         | 可变             |
+|                                                              | 线程安全                                                     | 线程不安全       |
+|                                                              | 多线程操作字符串                                             | 单线程操作字符串 |
+
+https://blog.csdn.net/itchuxuezhe_yang/article/details/89966303
+
+##  字符数组、String、StringBuffer的相互转化
+
+https://www.cnblogs.com/caiyishuai/p/9665732.html
+
 # git
 
 > git秘钥生成 https://www.cnblogs.com/xiuxingzhe/p/9303278.html
@@ -109,3 +128,33 @@ public static void arraycopy(
 >
 > Github使用公钥和私钥https://blog.csdn.net/memory_nothing/article/details/94908152
 
+# Android
+
+##  dp,in,mm,pt,px,sp
+
+> 如果设置表示长度、高度等属性时可以使用dp或sp。但如果设置字体，需要使用sp。
+>
+> https://blog.csdn.net/wlanye/article/details/81538394
+>
+> http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2012/1129/648.html
+
+## RelativeLayout(相对布局)
+
+> https://blog.csdn.net/qq_39216395/article/details/89217355?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-14&spm=1001.2101.3001.4242
+
+## AsyncTask和publishProgress学习
+
+> https://blog.csdn.net/qq_37858386/article/details/79112816
+>
+> publishProgress在进度对话框上设置新消息
+>
+> AsyncTask提供了五个回调函数：
+> 1、准备运行：onPreExecute(),该回调函数在任务被执行之后立即由UI线程调用。这个步骤通常用来建立任务，在用户接口（UI）上显示进度条。
+> 2、正在后台运行：doInBackground(Params...),该回调函数由后台线程在onPreExecute()方法执行结束后立即调用。通常在这里执行耗时的后台计算。计算的结果必须由该函数返回，并被传递到onPostExecute()中。在该函数内也可以使用publishProgress(Progress...)来发布一个或多个进度单位(unitsof progress)。这些值将会在onProgressUpdate(Progress...)中被发布到UI线程。
+>
+> 3、进度更新：onProgressUpdate(Progress...),该函数由UI线程在publishProgress(Progress...)方法调用完后被调用。一般用于动态地显示一个进度条。
+>
+> 4、完成后台任务：onPostExecute(Result),当后台计算结束后调用。后台计算的结果会被作为参数传递给这一函数。
+> 5、取消任务：onCancelled ()，在调用AsyncTask的cancel()方法时调用。
+
+![image-20210208093102920](https://github.com/hhhhhh11/image-folder/blob/main/image/image-20210208093102920.png)
