@@ -157,4 +157,12 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
 > 4、完成后台任务：onPostExecute(Result),当后台计算结束后调用。后台计算的结果会被作为参数传递给这一函数。
 > 5、取消任务：onCancelled ()，在调用AsyncTask的cancel()方法时调用。
 
+## module not specified
+
+> settings.gradle里添加      include ‘:module-name’
+
 ![image-20210208093102920](https://github.com/hhhhhh11/image-folder/blob/main/image/image-20210208093102920.png)
+
+# RecyclerView的使用
+
+https://blog.csdn.net/weixin_40625864/article/details/105207826
