@@ -157,12 +157,36 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
 > 4、完成后台任务：onPostExecute(Result),当后台计算结束后调用。后台计算的结果会被作为参数传递给这一函数。
 > 5、取消任务：onCancelled ()，在调用AsyncTask的cancel()方法时调用。
 
-## module not specified
-
-> settings.gradle里添加      include ‘:module-name’
-
-![image-20210208093102920](https://github.com/hhhhhh11/image-folder/blob/main/image/image-20210208093102920.png)
-
-# RecyclerView的使用
+## RecyclerView的使用
 
 https://blog.csdn.net/weixin_40625864/article/details/105207826
+
+## visibility属性Visible、Invisible、Gone
+
+> https://blog.csdn.net/weixin_37438128/article/details/90921739
+>
+> 当控件visibility属性为invisible时，界面保留了view控件所占有的空间；
+>
+> 而控件属性为gone时，界面则不保留view控件所占有的空间。
+
+##  动画实现imageview的移动
+
+```java
+emvicon=(ImageView)findViewById(R.id.emvicon);
+
+		btnUp.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+//				Toast.makeText(getApplication(),"上",Toast.LENGTH_SHORT).show();
+				ObjectAnimator a1=ObjectAnimator.ofFloat(emvicon,"TranslationY",y,y-1);
+				y--;
+				AnimatorSet as=new AnimatorSet();
+				as.play(a1);
+				as.start();
+			}
+		});
+```
+
+## Android 两个Activity 实现数据的来回传递
+
+https://www.cnblogs.com/zxgl/archive/2012/12/03/2800061.html
