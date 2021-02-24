@@ -117,3 +117,14 @@ ninja: build stopped: subcommand failed.
 > 安卓布文件显示异常
 >
 > 重启AS
+
+# module not specified
+
+> settings.gradle里添加      include ‘:module-name’
+
+![image-20210208093102920](https://github.com/hhhhhh11/image-folder/blob/main/image/image-20210208093102920.png)
+
+# 程序包android.support.v7.app不存在
+
+> https://blog.csdn.net/qq_36005498/article/details/104099785
+
