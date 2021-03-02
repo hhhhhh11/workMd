@@ -120,7 +120,7 @@ https://blog.csdn.net/itchuxuezhe_yang/article/details/89966303
 
 https://www.cnblogs.com/caiyishuai/p/9665732.html
 
-# git
+# Git
 
 > git秘钥生成 https://www.cnblogs.com/xiuxingzhe/p/9303278.html
 
@@ -137,6 +137,8 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
 > https://blog.csdn.net/wlanye/article/details/81538394
 >
 > http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2012/1129/648.html
+>
+> https://www.jianshu.com/p/b2c545c65355
 
 ## RelativeLayout(相对布局)
 
@@ -189,4 +191,16 @@ emvicon=(ImageView)findViewById(R.id.emvicon);
 
 ## Android 两个Activity 实现数据的来回传递
 
-https://www.cnblogs.com/zxgl/archive/2012/12/03/2800061.html
+>  https://www.cnblogs.com/zxgl/archive/2012/12/03/2800061.html
+>
+> 数据保存到本地SharedPreferences 
+>
+> https://blog.csdn.net/bingocoder/article/details/80613993
+
+## 动态添加碎片
+
+> 1. 创建待添加的碎片实例
+> 2. 获取FragmentManager，在活动中可以直接通过调用getSupportFragment()方法得到
+> 3. 开启一个事务，通过调用beginTransaction()方法开启
+> 4. 向容器内添加或替换碎片，一般使用replace()方法实心，需传入容器的id和待添加的碎片实例
+> 5. 提交事务，调用commit()方法来完成
