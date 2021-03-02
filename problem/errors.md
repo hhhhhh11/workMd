@@ -128,3 +128,6 @@ ninja: build stopped: subcommand failed.
 
 > https://blog.csdn.net/qq_36005498/article/details/104099785
 
+#  Plugin with id 'com.android.application' not found.
+
+> https://blog.csdn.net/liangtianmeng/article/details/90379526
