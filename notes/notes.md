@@ -120,15 +120,73 @@ https://blog.csdn.net/itchuxuezhe_yang/article/details/89966303
 
 https://www.cnblogs.com/caiyishuai/p/9665732.html
 
+##  关于java中for和foreach循环
+
+> (https://www.cnblogs.com/adeng/p/5681713.html)
+>
+> - **for循环中的循环条件中的变量只求一次值！具体看最后的图片**
+> - foreach语句是java5新增，在遍历数组、集合的时候，foreach拥有不错的性能。
+> - foreach是for语句的简化，但是foreach并不能替代for循环。可以这么说，任何foreach都能改写为for循环，但是反之则行不通。
+> - foreach不是java中的关键字。foreach的循环对象一般是一个集合，List、ArrayList、LinkedList、Vector、数组等。
+> - foreach的格式：
+>
+> 　　　　for(元素类型T 每次循环元素的名称O : 循环对象){
+>
+> 　　　　　　　　//对O进行操作
+>
+> 　　　　}
+
+
+
 # Git
+
+## Git使用注意
+
+> 文件路径中使用  /
+>
+> $ cd C:/Users/Administrator/.ssh
 
 > git秘钥生成 https://www.cnblogs.com/xiuxingzhe/p/9303278.html
 
 > git使用多个GitHub账号https://jingyan.baidu.com/article/948f592414ad67d80ef5f966.html
 >
+> https://blog.csdn.net/a258831020/article/details/50373060
+>
 > Github使用公钥和私钥https://blog.csdn.net/memory_nothing/article/details/94908152
 
+## Git常用命令
+
+![Git常用命令](https://github.com/hhhhhh11/image-folder/blob/main/image/git常用命令.png)
+
+## Git用法的全面解析，结合Android Studio来讲Git
+
+> https://blog.csdn.net/sxh951026/article/details/77200003
+
+## Git删除本地仓库
+
+> https://www.cnblogs.com/beeone/p/12254848.html
+>
+> （1）方法1：自己手动删除掉“Git本地仓库”里面的根目录下面的隐藏文件夹“.git”（如上图所示）
+>
+> （2）方法2：在本地仓库的目录下调用命令行删除根目录下的.git文件夹，输入
+>
+> ```
+> find . -name ".git" | xargs rm -Rf
+> ```
+
+## Git - 使用多个帐号
+
+> https://blog.csdn.net/a258831020/article/details/50373060
+
 # Android
+
+## Android JNI(一)——NDK与JNI基础
+
+> https://www.jianshu.com/p/87ce6f565d37   
+
+## Android ndk+jni:android.mk和application.mk写法
+
+> https://blog.csdn.net/u010326875/article/details/83031144
 
 ##  dp,in,mm,pt,px,sp
 
@@ -143,6 +201,18 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
 ## RelativeLayout(相对布局)
 
 > https://blog.csdn.net/qq_39216395/article/details/89217355?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-14&spm=1001.2101.3001.4242
+
+## Activity
+
+> | 回调        | 描述                                                         |
+> | :---------- | :----------------------------------------------------------- |
+> | onCreate()  | 这是第一个回调，在活动第一次创建时调用                       |
+> | onStart()   | 这个回调在活动为用户可见时被调用                             |
+> | onResume()  | 这个回调在应用程序与用户开始可交互的时候调用                 |
+> | onPause()   | 被暂停的活动无法接受用户输入，不能执行任何代码。当前活动将要被暂停，上一个活动将要被恢复时调用 |
+> | onStop()    | 当活动不在可见时调用                                         |
+> | onDestroy() | 当活动被系统销毁之前调用                                     |
+> | onRestart() | 当活动被停止以后重新打开时调用                               |
 
 ## AsyncTask和publishProgress学习
 
@@ -204,3 +274,45 @@ emvicon=(ImageView)findViewById(R.id.emvicon);
 > 3. 开启一个事务，通过调用beginTransaction()方法开启
 > 4. 向容器内添加或替换碎片，一般使用replace()方法实心，需传入容器的id和待添加的碎片实例
 > 5. 提交事务，调用commit()方法来完成
+
+## android:padding和android:margin的区别
+
+> padding为内边距；margin为外边距。
+>
+> https://blog.csdn.net/qq_32059827/article/details/51487997
+
+## Android Studio打开Android Device Monitor
+
+> https://blog.csdn.net/qq_42023080/article/details/105842271
+>
+> C:\Users\Administrator\AppData\Local\Android\Sdk\tools\lib\monitor-x86_64
+>
+> SDK文件夹里面
+
+# 计算机网络
+
+## IP地址、子网掩码等
+
+> https://blog.csdn.net/gatieme/article/details/50989257
+>
+> ![IP地址分类](https://img-blog.csdn.net/20160712182446560)
+>
+> ### 子网掩码
+> 子网掩码(subnet mask)，用来指明一个IP地址的哪些位标识的是主机所在的子网，以及哪些位标识的是主机的位掩码。
+>
+> 子网掩码不能单独存在，它必须结合IP地址一起使用。子网掩码只有一个作用，就是将某个IP地址划分成网络地址和主机地址两部分。 
+> 子网掩码是一个32位地址，用于屏蔽IP地址的一部分以区别网络标识和主机标识，并说明该IP地址是在局域网上，还是在远程网上。
+>
+> 子网掩码——屏蔽一个IP地址的网络部分的“全1”比特模式。对于A类地址来说，默认的子网掩码是255.0.0.0；对于B类地址来说默认的子网掩码是255.255.0.0；对于C类地址来说默认的子网掩码是255.255.255.0。
+>
+> 通过子网掩码，就可以判断两个IP在不在一个局域网内部。
+>
+> 子网掩码可以看出有多少位是网络号，有多少位是主机号
+>
+> ### 网络地址、广播地址
+>
+> - 将IP地址和子网掩码换算为二进制，子网掩码连续全1的是网络地址，后面的是主机地址，虚线前为网络地址，虚线后为主机地址
+> - **IP地址和子网掩码进行与运算，结果是网络地址**（即主机号全0是网络地址）
+> - 将运算结果中的网络地址不变，**主机地址变为1，结果就是广播地址**
+> - 地址范围就是含在本网段内的所有主机
+
