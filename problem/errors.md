@@ -131,3 +131,7 @@ ninja: build stopped: subcommand failed.
 #  Plugin with id 'com.android.application' not found.
 
 > https://blog.csdn.net/liangtianmeng/article/details/90379526
+
+# 错误：No layout manager attached; skipping layout
+
+> https://blog.csdn.net/wj5ryf78/article/details/94580361
