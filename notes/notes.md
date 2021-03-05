@@ -136,7 +136,9 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
 >
 > 　　　　}
 
+## try catch finally
 
+> https://blog.csdn.net/yuanmoxun0217/article/details/80939114
 
 # Git
 
@@ -157,6 +159,26 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
 ## Git常用命令
 
 ![Git常用命令](https://github.com/hhhhhh11/image-folder/blob/main/image/git常用命令.png)
+
+> # 配置git文件
+>
+> > git config  –(两个-)gloabal user.name “你的用户名”
+> >
+> > git config  –global user.email “你的邮箱”
+>
+> # 创建SSH Key 复制id_rsa.pub到github
+>
+> > ssh-keygen -t rsa -C “邮箱地址”
+> >
+> > 路径
+>
+> > 初始化本地仓库 git init
+> >
+> > 提交文件	git add .			所有文件
+> >
+> > ​					git commit	-m “first commit”	本次的提交说明
+> >
+> > ​					git remote add origin ~~https://github.com/LXiaoKang/web.git~~  删除线   ~~ xxx ~~（无空格）
 
 ## Git用法的全面解析，结合Android Studio来讲Git
 
@@ -316,3 +338,13 @@ emvicon=(ImageView)findViewById(R.id.emvicon);
 > - 将运算结果中的网络地址不变，**主机地址变为1，结果就是广播地址**
 > - 地址范围就是含在本网段内的所有主机
 
+#   数据库
+
+## 数据库事务
+
+一个事务本质上有四个特点ACID：
+
+1. Atomicity原子性
+2. Consistency一致性
+3. Isolation隔离性
+4. Durability耐久性
