@@ -1,5 +1,21 @@
 # C语言
 
+## 整数类型
+
+下表列出了关于标准整数类型的存储大小和值范围的细节：
+
+| 类型           | 存储大小    | 值范围                                               |
+| :------------- | :---------- | :--------------------------------------------------- |
+| char           | 1 字节      | -128 到 127 或 0 到 255                              |
+| unsigned char  | 1 字节      | 0 到 255                                             |
+| signed char    | 1 字节      | -128 到 127                                          |
+| int            | 2 或 4 字节 | -32,768 到 32,767 或 -2,147,483,648 到 2,147,483,647 |
+| unsigned int   | 2 或 4 字节 | 0 到 65,535 或 0 到 4,294,967,295                    |
+| short          | 2 字节      | -32,768 到 32,767                                    |
+| unsigned short | 2 字节      | 0 到 65,535                                          |
+| long           | 4 字节      | -2,147,483,648 到 2,147,483,647                      |
+| unsigned long  | 4 字节      | 0 到 4,294,967,295                                   |
+
 ## #ifdef，#else，#endif
 
 ```
@@ -61,7 +77,7 @@ https://blog.csdn.net/u010761559/article/details/83508834
 
 # Java
 
-## 八种基本类型
+##  八种基本类型
 
 > Java语言提供了八种基本类型。六种数字类型（四个整数型，两个浮点型），一种字符类型，还有一种布尔型。
 >
@@ -80,6 +96,48 @@ https://blog.csdn.net/u010761559/article/details/83508834
 > char	16位
 >
 > boolean	1位
+>
+> # [Java中short、int、long、float、double的取值范围](https://www.cnblogs.com/pangpanghuan/p/6418441.html)
+>
+>
+> 一、基本数据类型的特点，位数，最大值和最小值。
+> 1、
+> 基本类型：short 二进制位数：16 
+> 包装类：java.lang.Short 
+> 最小值：Short.MIN_VALUE=-32768 （-2的15此方）
+> 最大值：Short.MAX_VALUE=32767 （2的15次方-1）
+> 2、
+> 基本类型：int 二进制位数：32
+> 包装类：java.lang.Integer
+> 最小值：Integer.MIN_VALUE= -2147483648 （-2的31次方）
+> 最大值：Integer.MAX_VALUE= 2147483647 （2的31次方-1）
+> 3、
+> 基本类型：long 二进制位数：64
+> 包装类：java.lang.Long
+> 最小值：Long.MIN_VALUE=-9223372036854775808 （-2的63次方）
+> 最大值：Long.MAX_VALUE=9223372036854775807 （2的63次方-1）
+> 4、
+> 基本类型：float 二进制位数：32
+> 包装类：java.lang.Float
+> 最小值：Float.MIN_VALUE=1.4E-45 （2的-149次方）
+> 最大值：Float.MAX_VALUE=3.4028235E38 （2的128次方-1）
+> 5、
+> 基本类型：double 二进制位数：64
+> 包装类：java.lang.Double
+> 最小值：Double.MIN_VALUE=4.9E-324 （2的-1074次方）
+> 最大值：Double.MAX_VALUE=1.7976931348623157E308 （2的1024次方-1）
+>
+>  
+>
+> | 基本类型 | 字节数 | 位数  | 最大值                 | 最小值     |
+> | -------- | ------ | ----- | ---------------------- | ---------- |
+> | byte     | 1byte  | 8bit  | 2^7 - 1                | -2^7       |
+> | short    | 2byte  | 16bit | 2^15 - 1               | -2^15      |
+> | int      | 4byte  | 32bit | 2^31 - 1               | -2^31      |
+> | long     | 8byte  | 64bit | 2^63 - 1               | -2^63      |
+> | float    | 4byte  | 32bit | 3.4028235E38           | 1.4E - 45  |
+> | double   | 8byte  | 64bit | 1.7976931348623157E308 | 4.9E - 324 |
+> | char     | 2byte  | 16bit | 2^16 - 1               | 0          |
 
 ## System.arraycopy
 
@@ -155,6 +213,8 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
 > https://blog.csdn.net/a258831020/article/details/50373060
 >
 > Github使用公钥和私钥https://blog.csdn.net/memory_nothing/article/details/94908152
+>
+> 使用git config --global设置用户名和邮件https://blog.csdn.net/sjt19910311/article/details/83685616
 
 ## Git常用命令
 
@@ -199,6 +259,10 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
 ## Git - 使用多个帐号
 
 > https://blog.csdn.net/a258831020/article/details/50373060
+
+# ADB
+
+
 
 # Android
 
