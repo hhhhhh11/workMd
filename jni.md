@@ -1,3 +1,7 @@
+> # Android JNI学习(三)——Java与Native相互调用
+>
+> https://www.jianshu.com/p/b71aeb4ed13d
+
 # ndk.h
 
 ```c
