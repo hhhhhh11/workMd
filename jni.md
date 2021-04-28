@@ -152,7 +152,62 @@ private static String TAG = "EccTest";
     }
 ```
 
-
+> ```c
+> /**
+> *@brief	将AscII码的字符串转换成压缩的HEX格式
+> *@details	非偶数长度的字符串根据对齐方式，采取左右补0。
+> *@param	pszAsciiBuf		被转换的ASCII字符串
+> *@param	nLen			输入数据长度(ASCII字符串的长度)
+> *@param	ucType			对齐方式  0－左对齐  1－右对齐
+> *@retval	psBcdBuf		转换输出的HEX数据
+> *@return
+> *@li	NDK_OK				操作成功
+> *@li	\ref NDK_ERR_PARA "NDK_ERR_PARA"	参数非法(pszAsciiBuf/psBcdBuf为NULL、nLen<=0)
+> */
+> extern int (*NDK_AscToHex )(const uchar* pszAsciiBuf, int nLen, uchar ucType, uchar* psBcdBuf);
+> 
+> /**
+>  *@brief	将HEX码数据转换成AscII码字符串
+>  *@param	psBcdBuf		被转换的Hex数据
+>  *@param	nLen			转换数据长度(ASCII字符串的长度)
+>  *@param	ucType			对齐方式  1－左对齐  0－右对齐
+>  *@retval	pszAsciiBuf		转换输出的AscII码数据
+>  *@return
+>  *@li	NDK_OK				操作成功
+>  *@li	\ref NDK_ERR_PARA "NDK_ERR_PARA"	参数非法(psBcdBuf/pszAsciiBuf为NULL、nLen<0、ucType非法)
+> */
+> extern int (*NDK_HexToAsc )(const uchar* psBcdBuf, int nLen, uchar ucType, uchar* pszAsciiBuf);
+> 
+>     /**
+>      * 将AscII码的字符串转换成压缩的HEX格式               a,b,c  ->  0xab,0xc0
+>      * @param asciiBuf          被转换的ASCII字符串
+>      * @param len               输入数据长度(ASCII字符串的长度)
+>      * @param type              对齐方式  0－左对齐  1－右对齐
+>      * @param bcdBuf            转换输出的HEX数据
+>      * @return
+>      */
+>     public int NdkApi_AscToHex(byte[] asciiBuf,int len,byte type,byte[] bcdBuf){
+>         int ret;
+>         ret = JNI_NDK_AscToHex(asciiBuf, len, type, bcdBuf);
+>         return ret;
+>     }
+> 
+>     /**
+>      * 将HEX码数据转换成AscII码字符串      0xaa,0x0b,0x0c --> a,a,0,b,0,c
+>      * @param bcdBuf            被转换的Hex数据
+>      * @param len               转换数据长度(ASCII字符串的长度)
+>      * @param type              对齐方式  1－左对齐  0－右对齐
+>      * @param asciiBuf          转换输出的AscII码数据
+>      * @return
+>      */
+>     public int NdkApi_HexToAsc(byte[] bcdBuf,int len,byte type,byte[] asciiBuf){
+>         int ret;
+>         ret = JNI_NDK_HexToAsc(bcdBuf, len, type, asciiBuf);
+>         return ret;
+>     }
+> ```
+>
+> 
 
 
 

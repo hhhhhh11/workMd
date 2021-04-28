@@ -59,6 +59,50 @@
 >  printf("使用 memcpy 后: %s\n", dest);
 > ```
 
+##  strcpy
+
+> ```
+> char *strcpy(char *dest, const char *src)
+> ```
+>
+> ## 参数
+>
+> - **dest** -- 指向用于存储复制内容的目标数组。
+> - **src** -- 要复制的字符串。
+
+## memcmp
+
+> ```
+> int memcmp(const void *str1, const void *str2, size_t n)
+> ```
+>
+> ## 参数
+>
+> - **str1** -- 指向内存块的指针。
+> - **str2** -- 指向内存块的指针。
+> - **n** -- 要被比较的字节数。
+>
+> ## 返回值
+>
+> - 如果返回值 < 0，则表示 str1 小于 str2。
+> - 如果返回值 > 0，则表示 str1 大于 str2。
+> - 如果返回值 = 0，则表示 str1 等于 str2。
+
+## calloc
+
+> ```
+> void *calloc(size_t nitems, size_t size)
+> ```
+>
+> ## 参数
+>
+> - **nitems** -- 要被分配的元素个数。
+> - **size** -- 元素的大小。
+>
+> ## 返回值
+>
+> 该函数返回一个指针，指向已分配的内存。如果请求失败，则返回 NULL。
+
 ## 值传递、指针传递、引用传递（C++）
 
 https://blog.csdn.net/u013550000/article/details/80954151
@@ -74,6 +118,67 @@ https://www.cnblogs.com/sum-41/p/10799555.html
 ## C语言中Hex转ASCII函数
 
 https://blog.csdn.net/u010761559/article/details/83508834
+
+## fopen
+
+> ```c
+> FILE *fopen(const char *filename, const char *mode)
+> ```
+>
+> - **filename** -- 这是 C 字符串，包含了要打开的文件名称。
+> - **mode** -- 这是 C 字符串，包含了文件访问模式，模式如下：
+>
+> | 模式 | 描述                                                         |
+> | :--- | :----------------------------------------------------------- |
+> | "r"  | 打开一个用于读取的文件。该文件必须存在。                     |
+> | "w"  | 创建一个用于写入的空文件。如果文件名称与已存在的文件相同，则会删除已有文件的内容，文件被视为一个新的空文件。 |
+> | "a"  | 追加到一个文件。写操作向文件末尾追加数据。如果文件不存在，则创建文件。 |
+> | "r+" | 打开一个用于更新的文件，可读取也可写入。该文件必须存在。     |
+> | "w+" | 创建一个用于读写的空文件。                                   |
+> | "a+" | 打开一个用于读取和追加的文件。                               |
+
+## fread 
+
+> ```c
+> size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream)
+> ```
+>
+> ## 参数
+>
+> - **ptr** -- 这是指向带有最小尺寸 *size\*nmemb* 字节的内存块的指针。
+> - **size** -- 这是要读取的每个元素的大小，以字节为单位。
+> - **nmemb** -- 这是元素的个数，每个元素的大小为 size 字节。
+> - **stream** -- 这是指向 FILE 对象的指针，该 FILE 对象指定了一个输入流。
+
+## stat
+
+> 头文件：#include<sys/stat.h>  #include<uninstd.h>
+>
+> 定义函数：int stat(const char * file_name, struct stat *buf);
+>
+> 函数说明：stat()用来将参数file_name 所指的文件状态, 复制到参数buf 所指的结构中。
+>
+> 下面是struct stat 内各参数的说明：
+>
+> [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+>
+> ```c
+>  1 struct stat {
+>  2     dev_t st_dev; //device 文件的设备编号
+>  3     ino_t st_ino; //inode 文件的i-node
+>  4     mode_t st_mode; //protection 文件的类型和存取的权限
+>  5     nlink_t st_nlink; //number of hard links 连到该文件的硬连接数目, 刚建立的文件值为1.
+>  6     uid_t st_uid; //user ID of owner 文件所有者的用户识别码 
+>  7     gid_t st_gid; //group ID of owner 文件所有者的组识别码 
+>  8     dev_t st_rdev; //device type 若此文件为装置设备文件, 则为其设备编号 
+>  9     off_t st_size; //total size, in bytes 文件大小, 以字节计算 
+> 10     unsigned long st_blksize; //blocksize for filesystem I/O 文件系统的I/O 缓冲区大小. 
+> 11     u nsigned long st_blocks; //number of blocks allocated 占用文件区块的个数, 每一区块大小为512 个字节. 
+> 12     time_t st_atime; //time of lastaccess 文件最近一次被存取或被执行的时间, 一般只有在用mknod、 utime、read、write 与tructate 时改变.
+> 13     time_t st_mtime; //time of last modification 文件最后一次被修改的时间, 一般只有在用mknod、 utime 和write 时才会改变
+> 14     time_t st_ctime; //time of last change i-node 最近一次被更改的时间, 此参数会在文件所有者、组、 权限被更改时更新 
+> 15 };
+> ```
 
 # Java
 
@@ -374,6 +479,109 @@ emvicon=(ImageView)findViewById(R.id.emvicon);
 > C:\Users\Administrator\AppData\Local\Android\Sdk\tools\lib\monitor-x86_64
 >
 > SDK文件夹里面
+
+## Android Theme 常见主题风格详解
+
+> https://www.jianshu.com/p/15f1c54ad5a0
+>
+> - 4.1 colorPrimary
+>
+> App Bar 的背景色，即 ActionBar，通常也是一个 App 的主题色调。不过 ActionBar 已经退出历史舞台，由 Toolbar 代替使用，但是 Toolbar 需要在 layout 文件中单独使用 background 属性设置背景色，如：
+>
+> ```xml
+> <android.support.v7.widget.Toolbar
+>   android:layout_width="match_parent"
+>   android:layout_height="wrap_content"
+>   android:background="?attr/colorPrimary" />
+> ```
+>
+> - 4.2 colorPrimaryDark
+>
+> status bar（状态栏）背景色。仅作用于 Lollipop 及更高版本。
+>
+> - 4.3 colorAccent
+>
+> 许多控件在选中状态或获取焦点状态下使用这个颜色，常见有：
+>
+> - CheckBox：checked 状态
+>
+> - RadioButton：checked 状态
+>
+> - SwitchCompat：checked 状态
+>
+> - EditText：获取焦点时的 underline 和 cursor 颜色
+>
+> - TextInputLayout：悬浮 label 字体颜色
+>
+>   ```undefined
+>   等等
+>   ```
+>
+> - 4.4 android:navigationBarColor
+>
+> navigation bar 背景色。仅作用于 Lollipop 及更高版本。
+>
+> - 4.5 colorControlNormal
+>
+> 某些 Views “normal” 状态下的颜色，常见如：unselected CheckBox 和 RadioButton，失去焦点时的 EditText，Toolbar 溢出按钮颜色，等等。
+>
+> - 4.6 colorControlActivated
+>
+> 某种程度上，是 colorAccent 的替代者，比如对于 CheckBox 和 RadioButton 的 checked 状态，colorControlActivated 属性会覆盖 colorAccent 属性的对应颜色。
+>
+> - 4.7 colorControlHighlight
+>
+> 所有可点击 Views 触摸状态下的 Ripple（涟漪）效果。仅作用于 Lollipop 及更高版本。
+>
+> - 4.8 colorButtonNormal
+>
+> Button normal 状态下的背景色。注意，这种设置与 Button 的 android:background 属性改变背景色不同的是，前者在 Lollipop 及更高版本上会让 Button 依旧保持阴影和 Ripple 触摸效果。
+>
+> - 4.9 android:windowBackground
+>
+> 窗口背景色，诸如此类的还有：android:background，android:colorBackground 等。
+>
+> - 4.10 android:textColorPrimary
+>
+> EditText 的 text color，等等文本颜色。
+>
+> - 4.11 navigationIcon
+>
+> 返回按钮的图片
+>
+> 
+>
+> 作者：门心叼龙
+> 链接：https://www.jianshu.com/p/15f1c54ad5a0
+> 来源：简书
+> 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+## SharedPreferences
+
+> # 将数据保存到SharedPreferences中
+>
+> getSharedPreferences(“data”,MODE_PRIVATE).edit();
+>
+> data是SharedPreferences的文件名，MODE_PRIVATE是操作模式（目前只有这一种）
+>
+> 1.调用SharedPreferences对象的edit方法获取一个SharedPreferences.Editor对象
+>
+> 2.向SharedPreferences.Editor对象中添加数据，putBoolean(),putString()……
+>
+> ​			putString(“name”,”Tom”)	
+>
+> 3.调用apply()方法将添加的数据提交
+>
+> # 从SharedPreferences中读取数据
+>
+> SharedPreferences pref = getSharedPreferences(“data”,MODE_PRIVATE)；
+>
+> String name = pref.getString(“name”,””);	
+
+## Intent的setClass和setClassName的区别
+
+> **setClass**：跳转到与该工程下的（同一个Application中的）activity或者service
+> **setClassName**：跳转到不同Applicaiton的activity或者service
 
 # 计算机网络
 
