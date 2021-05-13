@@ -16,6 +16,24 @@
 | long           | 4 字节      | -2,147,483,648 到 2,147,483,647                      |
 | unsigned long  | 4 字节      | 0 到 4,294,967,295                                   |
 
+##  i++ 和 ++i
+
+> 1、首先，单独拿出来说++i和i++，意思都是一样的，就是i=i+1。
+>
+> 2、如果当做运算符来说，就是a=i++或者a=++i这样的形式。情况就不一样了。
+>
+> 先说a=i++，这个运算的意思是先把i的值赋予a，然后在执行i=i+1；
+>
+> 而a=++i，这个的意思是先执行i=i+1，然后在把i的值赋予a；
+>
+> 举个例子来说，如果一开始i=4。
+>
+> 那么执行a=i++这条语句之后，a=4，i=5；
+>
+> 那么执行a=++i这条语句之后，i=5，a=5；
+>
+> 同理，i--和--i的用法也是一样的。
+
 ## #ifdef，#else，#endif
 
 ```
@@ -303,6 +321,27 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
 
 > https://blog.csdn.net/yuanmoxun0217/article/details/80939114
 
+## Java POI的使用
+
+> https://blog.csdn.net/qq_21137441/article/details/79226171
+>
+> https://blog.csdn.net/shangming150/article/details/78261095
+>
+> |        类名        |         说明         |
+> | :----------------: | :------------------: |
+> |    HSSFWorkbook    |   Excel的文档对象    |
+> |     HSSFSheet      |     Excel的表单      |
+> |      HSSFRow       |      Excel的行       |
+> |      HSSFCell      |   Excel的格子单元    |
+> |      HSSFFont      |      Excel字体       |
+> |   HSSFDataFormat   |  格子单元的日期格式  |
+> |     HSSFHeader     | Excel文档Sheet的页眉 |
+> |     HSSFFooter     | Excel文档Sheet的页脚 |
+> |   HSSFCellStyle    |     格子单元样式     |
+> |    HSSFDateUtil    |         日期         |
+> |   HSSFPrintSetup   |         打印         |
+> | HSSFErrorConstants |      错误信息表      |
+
 # Git
 
 ## Git使用注意
@@ -367,7 +406,23 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
 
 # ADB
 
+## adb查看包名
 
+>  adb shell am monitor                                          quit结束监控
+>
+> adb shell dumpsys window | findstr mCurrentFocus
+
+##  高通方案的Android设备几种开机模式的进入与退出
+
+https://www.cnblogs.com/we-hjb/p/9784659.html
+
+> | 开机模式                      | 屏幕显示     | 冷启动                                        | 热启动                                  | 按键退出                    | 命令退出                                          |
+> | ----------------------------- | ------------ | --------------------------------------------- | --------------------------------------- | --------------------------- | ------------------------------------------------- |
+> | Android/Normal                | Android界面  | 按Power键                                     | adb reboot                              | 手机短按，VR长按Power键     | adb shell reboot -p(关机)                         |
+> | Recovery/OTA/卡刷             | Recovery界面 | 按住OK键(Vol+)，再按Power键                   | adb reboot recovery                     | 长按Power键重启             | adb reboot                                        |
+> | Fastboot/线刷                 | Fastboot界面 | 按住BACK键(Vol-)，再按Power键                 | adb reboot bootloader                   | 长按Power键重启             | fastboot reboot  fastboot continue(resuming boot) |
+> | FFBM/Fast Factory/厂测/半开机 | 显示测试列表 | misc分区头部为ffbm时，按Power键               | misc分区头部为ffbm时，adb reboot        | 长按Power键重启依然进入FFBM | 唯一退出方式擦除misc分区                          |
+> | EDL/紧急下载/9008/砖头/裸板   | 无显示,黑屏  | 同时按住OK键(Vol+)和BACK键(Vol-)，再按Power键 | adb reboot edlfastboot reboot emergency | 长按Power键重启             | 无                                                |
 
 # Android
 
@@ -419,6 +474,14 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
 >
 > 4、完成后台任务：onPostExecute(Result),当后台计算结束后调用。后台计算的结果会被作为参数传递给这一函数。
 > 5、取消任务：onCancelled ()，在调用AsyncTask的cancel()方法时调用。
+>
+> AsyncTask的构造函数有三个模板参数
+>
+> 1、Params，传递给后台任务的参数类型
+>
+> 2、Progress，后台计算执行过程中，进步单位（progress units）的类型
+>
+> 3、Result，后台执行返回的结果类型
 
 ## RecyclerView的使用
 
