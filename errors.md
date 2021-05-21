@@ -138,26 +138,24 @@ ninja: build stopped: subcommand failed.
 
 # android Button、TabLayout英文自动改小写为大写的问题
 
-> # [android Button、TabLayout英文自动改小写为大写的问题](https://www.cnblogs.com/jooy/p/9064005.html)
->
 > 　　如果是**Button**自动大写问题，直接设置Button的 **textAllCaps="false"** 即可；
 >
 > 　　如果是**TabLayout**出现全大写问题，先在style.xml加入属性：
 >
 > ```
-> <style name="TabLayoutTextStyle" parent="TextAppearance.Design.Tab">
->         <item name="android:textSize">12sp</item>
->         <item name="textAllCaps">false</item>
-> </style>
-> ```
->
+><style name="TabLayoutTextStyle" parent="TextAppearance.Design.Tab">
+>      <item name="android:textSize">12sp</item>
+>      <item name="textAllCaps">false</item>
+>    </style>
+>    ```
+> 
 > 布局中引入该样式即可
 >
 > ```
-> <!-- 注：无效方式 style="@style/TabLayoutTextStyle" -->
+><!-- 注：无效方式 style="@style/TabLayoutTextStyle" -->
 > <android.support.design.widget.TabLayout
->     android:id="@+id/pcTabLayout"
->     android:layout_width="match_parent"
+>  android:id="@+id/pcTabLayout"
+>  android:layout_width="match_parent"
 >     android:layout_height="wrap_content"
 >     app:tabTextAppearance="@style/TabLayoutTextStyle" />
-> ```
+>    ```

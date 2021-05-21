@@ -321,6 +321,18 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
 
 > https://blog.csdn.net/yuanmoxun0217/article/details/80939114
 
+## Java substring()方法
+
+> ```java
+> public String substring(int beginIndex)
+>     
+> public String substring(int beginIndex, int endIndex)
+> 
+> ```
+>
+> - **beginIndex** -- 起始索引（包括）, 索引从 0 开始。
+> - **endIndex** -- 结束索引（不包括）。
+
 ## Java POI的使用
 
 > https://blog.csdn.net/qq_21137441/article/details/79226171
@@ -341,6 +353,17 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
 > |    HSSFDateUtil    |         日期         |
 > |   HSSFPrintSetup   |         打印         |
 > | HSSFErrorConstants |      错误信息表      |
+
+## 获取当前时间
+
+> ```java
+> long currentTime = System.currentTimeMillis();
+> String timeNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(currentTime);
+> ```
+>
+> https://www.icode9.com/content-4-466089.html
+>
+> https://blog.csdn.net/qimuya/article/details/12760553?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-4.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-4.control
 
 # Git
 
@@ -645,6 +668,15 @@ emvicon=(ImageView)findViewById(R.id.emvicon);
 
 > **setClass**：跳转到与该工程下的（同一个Application中的）activity或者service
 > **setClassName**：跳转到不同Applicaiton的activity或者service
+
+## 关机重启等操作
+
+> ```java
+> public void systemReboot(Context context,String reason){
+>     PowerManager pm = (PowerManager) context.getApplicationContext().getSystemService(Context.POWER_SERVICE);
+>     pm.reboot(reason);
+> }
+> ```
 
 # 计算机网络
 
