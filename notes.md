@@ -427,6 +427,10 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
 
 > https://blog.csdn.net/a258831020/article/details/50373060
 
+## 更新代码
+
+> 更新代码    git pull --rebase origin 分支名
+
 # ADB
 
 ## adb查看包名
