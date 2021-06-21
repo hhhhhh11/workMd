@@ -453,6 +453,10 @@ https://www.cnblogs.com/we-hjb/p/9784659.html
 
 # Android
 
+## Android命名规范
+
+> https://www.jianshu.com/p/b7a644ea0d25
+
 ## Android JNI(一)——NDK与JNI基础
 
 > https://www.jianshu.com/p/87ce6f565d37   
@@ -486,6 +490,8 @@ https://www.cnblogs.com/we-hjb/p/9784659.html
 > | onStop()    | 当活动不在可见时调用                                         |
 > | onDestroy() | 当活动被系统销毁之前调用                                     |
 > | onRestart() | 当活动被停止以后重新打开时调用                               |
+>
+> activity生命周期
 
 ## AsyncTask和publishProgress学习
 
