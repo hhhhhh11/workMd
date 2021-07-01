@@ -70,11 +70,13 @@
 > str1 -- 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针。
 > str2 -- 指向要复制的源数组，类型强制转换为 void* 指针。
 > n -- 要被复制的字节数。
->  char src[] = "***";
->  char dest[] = "abcdefg";
->  printf("使用 memcpy 前: %s\n", dest);
->  memcpy(dest, src, strlen(src));
->  printf("使用 memcpy 后: %s\n", dest);
+> memcpy(dest, src, strlen(src));
+> 
+> char src[] = "***";
+> char dest[] = "abcdefg";
+> printf("使用 memcpy 前: %s\n", dest);
+> memcpy(dest, src, strlen(src));
+> printf("使用 memcpy 后: %s\n", dest);
 > ```
 
 ##  strcpy
@@ -359,11 +361,21 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
 > ```java
 > long currentTime = System.currentTimeMillis();
 > String timeNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(currentTime);
+> 
+> TimeUnit.DAYS          //天  
+> TimeUnit.HOURS         //小时  
+> TimeUnit.MINUTES       //分钟  
+> TimeUnit.SECONDS       //秒  
+> TimeUnit.MILLISECONDS  //毫秒 
+> TimeUnit.NANOSECONDS   //毫微秒
+> TimeUnit.MICROSECONDS  //微秒
 > ```
 >
 > https://www.icode9.com/content-4-466089.html
 >
 > https://blog.csdn.net/qimuya/article/details/12760553?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-4.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-4.control
+
+
 
 # Git
 
@@ -465,6 +477,27 @@ https://www.cnblogs.com/we-hjb/p/9784659.html
 
 > https://blog.csdn.net/u010326875/article/details/83031144
 
+##  NDK调试
+
+> NDK调试arm-linux-androideabi-addr2line工具的使用
+>
+> F:\Android\AndroidSDK\ndk-bundle\toolchains\arm-linux-androideabi-4.9\prebuilt\windows-x86_64\bin
+>
+> arm-linux-androideabi-addr2line -e F:\Android\eclipse\Workspace\PosAuthority\obj\local\armeabi-v7a\libPosAut hority.so 00005c6f
+> F:/Android/eclipse/Workspace/PosAuthority/jni/libmfgutil.c:429 (discriminator 1)
+>
+> arm-linux-androideabi-addr2line -e
+> F:\workspace\FFmpegDemo\app\build\intermediates\cmake\debug\obj\armeabi\libffmpeg-lib.so 00002c6f
+>
+> arm-linux-androideabi-addr2line -e 需要调试的so库路径 内存地址
+>
+> 64位
+> F:\Android\AndroidSDK\ndk-bundle\toolchains\mips64el-linux-android-4.9\prebuilt\windows-x86_64\bin
+> mips64el-linux-android-addr2line
+>
+> openssl pkcs7 -inform DER -in CERT.RSA  -noout -print_certs -text
+> 看证书签名
+
 ##  dp,in,mm,pt,px,sp
 
 > 如果设置表示长度、高度等属性时可以使用dp或sp。但如果设置字体，需要使用sp。
@@ -481,6 +514,8 @@ https://www.cnblogs.com/we-hjb/p/9784659.html
 
 ## Activity
 
+> activity生命周期
+>
 > | 回调        | 描述                                                         |
 > | :---------- | :----------------------------------------------------------- |
 > | onCreate()  | 这是第一个回调，在活动第一次创建时调用                       |
@@ -490,8 +525,26 @@ https://www.cnblogs.com/we-hjb/p/9784659.html
 > | onStop()    | 当活动不在可见时调用                                         |
 > | onDestroy() | 当活动被系统销毁之前调用                                     |
 > | onRestart() | 当活动被停止以后重新打开时调用                               |
+
+## Fragment
+
+> fragment生命周期
 >
-> activity生命周期
+> |                        |                                                            |
+> | ---------------------- | ---------------------------------------------------------- |
+> | **onAttach()**         | 在Fragment和Activity建立关联时调用(Activity传递到此方法内) |
+> | onCreate()             |                                                            |
+> | **onCreateView()**     | 当Fragment创建视图时调用                                   |
+> | **onActivityCreate()** | 在相关联的Activity的onCreate()方法已返回时调用             |
+> | onStart()              |                                                            |
+> | onResume()             |                                                            |
+> | onPause()              |                                                            |
+> | onStop()               |                                                            |
+> | **onDestroyView()**    | 当Fragment中的视图被移除时调用                             |
+> | onDestroy()            |                                                            |
+> | **onDetach()**         | 当Fragment 和 Activity 取消关联时调用                      |
+>
+> 
 
 ## AsyncTask和publishProgress学习
 
