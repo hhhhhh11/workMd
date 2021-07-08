@@ -516,6 +516,8 @@ https://www.cnblogs.com/we-hjb/p/9784659.html
 
 > activity生命周期
 >
+> ![](https://img-blog.csdnimg.cn/20190221143601607.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODE5NjQwNw==,size_16,color_FFFFFF,t_70)
+>
 > | 回调        | 描述                                                         |
 > | :---------- | :----------------------------------------------------------- |
 > | onCreate()  | 这是第一个回调，在活动第一次创建时调用                       |
