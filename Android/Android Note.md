@@ -277,3 +277,10 @@ emvicon=(ImageView)findViewById(R.id.emvicon);
 >  pm.reboot(reason);
 > }
 > ```
+
+## 设置EditText光标在最后
+
+> ```java
+> EditText edittext = (EditText)findViewById(R.id.edittext);
+> edittext.setSelection(edittext.getText().length());
+> ```
