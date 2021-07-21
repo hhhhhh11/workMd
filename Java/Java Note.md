@@ -193,3 +193,64 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
     }
 ```
 
+## ScheduledExecutorService
+
+> 线程池之 newScheduledThreadPool中scheduleAtFixedRate（四个参数）_忍耐-CSDN博客_scheduleatfixedrate
+> https://blog.csdn.net/weixin_35756522/article/details/81707276
+
+###  .schedule
+
+> ```java
+> schedule(Runnable command,
+>          long delay,
+>          TimeUnit unit);
+> ```
+>
+> 
+>
+> 
+
+> ```java
+> schedule(Callable<V> callable,
+>          long delay,
+>          TimeUnit unit);
+> ```
+>
+> 
+>
+> 
+
+> ```java
+> scheduleAtFixedRate(Runnable command,
+>                     long initialDelay,
+>                     long period,
+>                     TimeUnit unit);
+> ```
+>
+> command：执行线程
+> initialDelay：初始化延时
+> period：两次开始执行最小间隔时间
+> unit：计时单位
+>
+> 
+
+> ```java
+>  scheduleWithFixedDelay(Runnable command,
+>                         long initialDelay,
+>                         long delay,
+>                         TimeUnit unit);
+> ```
+>
+> command：执行线程
+> initialDelay：初始化延时
+> period：前一次执行结束到下一次执行开始的间隔时间（间隔执行延迟时间）
+> unit：计时单位
+
+ScheduledExecutorService#scheduleAtFixedRate() 指的是“以固定的频率”执行，period（周期）指的是两次成功执行之间的时间
+
+> 比如，`scheduleAtFixedRate(command, 5, 2, second)`，第一次开始执行是5s后，假如执行耗时1s，那么下次开始执行是7s后，再下次开始执行是9s后
+
+而ScheduledExecutorService#scheduleWithFixedDelay() 指的是“以固定的延时”执行，delay（延时）指的是一次执行终止和下一次执行开始之间的延迟
+
+> `scheduleWithFixedDelay(command, 5, 2, second)`，第一次开始执行是5s后，假如执行耗时1s，执行完成时间是6s后，那么下次开始执行是8s后，再下次开始执行是11s后
+
