@@ -284,3 +284,15 @@ emvicon=(ImageView)findViewById(R.id.emvicon);
 > EditText edittext = (EditText)findViewById(R.id.edittext);
 > edittext.setSelection(edittext.getText().length());
 > ```
+
+## 显示字符串
+
+> ```java
+>     public void showMessage(TextView tv, String message) {
+>         runOnUiThread(() -> {
+>             tv.setText(message);
+>         });
+>     }
+> ```
+>
+> 
