@@ -10,3 +10,21 @@ applicationVariants.all { variant ->
     }
 ```
 
+```
+    signingConfigs {
+        release {
+            keyAlias 'key0'
+            keyPassword 'newland'
+            storeFile file("newland_keystore.jks")
+            storePassword 'newland'
+        }
+
+        debug {
+            keyAlias 'key0'
+            keyPassword 'newland'
+            storeFile file("newland_keystore.jks")
+            storePassword 'newland'
+        }
+    }
+```
+
