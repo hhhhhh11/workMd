@@ -296,3 +296,75 @@ emvicon=(ImageView)findViewById(R.id.emvicon);
 > ```
 >
 > 
+
+## 监听开机广播
+
+
+
+>  https://blog.csdn.net/watermusicyes/article/details/44963773
+>
+> 在Activity中使用startActivity()方法不会有任何限制，因为Activity重载了Context的startActivity()方法。但是如果是在其他地方（如Widget或Service、BroadcastReceiver中）使用startActivity()方法，就会报错：
+>
+> android.util.AndroidRuntimeException: Calling startActivity() from outside of an Activity  context requires the FLAG_ACTIVITY_NEW_TASK flag. Is this really what you want?
+>
+> 这时就需要为Intent设置一个FLAG_ACTIVITY_NEW_TASK的flag：
+>
+> Intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
+>
+> 这样就不会报错了，可以顺利的startActivity()。
+
+>```java
+>/**
+> * 监听开机广播
+> */
+>public class BootReceiver extends BroadcastReceiver {
+>
+>    @Override
+>    public void onReceive(Context context, Intent intent) {
+>        // TODO: This method is called when the BroadcastReceiver is receiving
+>        String action = intent.getAction();
+>        LogUtils.e("start_action : " + action);
+>        if (action.equals(Intent.ACTION_BOOT_COMPLETED)){
+>            // 打印开机时间
+>            long currentTime = System.currentTimeMillis();
+>            String timeNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(currentTime);
+>            LogUtils.d("开机时间 ："+timeNow);
+>            // com.dianshijia.newlive.entry.SplashActivity
+>            // com.dianshijia.newlive.home.LiveVideoActivity
+>            Intent startTVIntent = new Intent();
+>            startTVIntent.setClassName("com.dianshijia.newlive","com.dianshijia.newlive.entry.SplashActivity");
+>            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+>            context.startActivity(startTVIntent);
+>        }
+>    }
+>}
+>```
+>
+>添加权限
+>
+>```xml
+><uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+>
+>注册广播
+>        <receiver
+>            android:name=".BootReceiver"
+>            android:enabled="true"
+>            android:exported="true">
+>            <intent-filter android:priority="1000">
+>                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+>            </intent-filter>
+>
+>        </receiver>
+>```
+>
+>
+
+## 启动其它应用
+
+> ```java
+>     Intent intent=new Intent();  
+>     //包名 包名+类名（全路径）  
+>     intent.setClassName("com.linxcool", "com.linxcool.PlaneActivity");  
+>     startActivity(intent);  
+> ```
+
