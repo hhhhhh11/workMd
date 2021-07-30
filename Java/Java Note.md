@@ -256,3 +256,12 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
 >
 > > `scheduleWithFixedDelay(command, 5, 2, second)`，第一次开始执行是5s后，假如执行耗时1s，执行完成时间是6s后，那么下次开始执行是8s后，再下次开始执行是11s后
 
+## 线程池
+
+> ~~~java
+> new ThreadPoolExecutor(corePoolSize, maximumPoolSize,
+> 	keepAliveTime, milliseconds,runnableTaskQueue, threadFactory,handler);
+> 
+> ~~~
+>
+> 

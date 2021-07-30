@@ -26,5 +26,21 @@ applicationVariants.all { variant ->
             storePassword 'newland'
         }
     }
+    
+    signingConfigs {
+        release {
+            keyAlias 'newland'
+            keyPassword 'IM81factory'
+            storeFile file("keystore")
+            storePassword 'IM81factory'
+        }
+
+        debug {
+            keyAlias 'newland'
+            keyPassword 'IM81factory'
+            storeFile file("keystore")
+            storePassword 'IM81factory'
+        }
+    }
 ```
 

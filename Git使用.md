@@ -67,5 +67,7 @@
 ## Git切换远程分支
 
 git切换到指定远程分支_astonishqft的博客-CSDN博客_git 切换到远程分支
-https://blog.csdn.net/astonishqft/article/details/8302949
+https://blog.csdn.net/astonishqft/article/details/83029490
+
+> git checkout -b 本地分支名 origin/远程分支名
 
