@@ -42,6 +42,20 @@
 > http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2012/1129/648.html
 >
 > https://www.jianshu.com/p/b2c545c65355
+>
+> android 屏幕尺寸适配实现方案_易家四少的博客-CSDN博客
+> https://blog.csdn.net/ygz111111/article/details/80309707
+>
+> > 1 inch = 2.54 cm
+> >
+> > **屏幕分辨率 : **单位px（pixel），纵向像素×横向像素，如1960×1080
+> > **屏幕像素密度 ：**单位dpi（dot per inch）  
+> >
+> > 
+> >
+> > **dp转px ：** dp值×（当前dpi/160dpi)=>得出当前的像素数目
+> >
+> > 
 
 ## RelativeLayout(相对布局)
 
@@ -362,9 +376,125 @@ emvicon=(ImageView)findViewById(R.id.emvicon);
 ## 启动其它应用
 
 > ```java
->     Intent intent=new Intent();  
->     //包名 包名+类名（全路径）  
->     intent.setClassName("com.linxcool", "com.linxcool.PlaneActivity");  
->     startActivity(intent);  
+>  Intent intent=new Intent();  
+>  //包名 包名+类名（全路径）  
+>  intent.setClassName("com.linxcool", "com.linxcool.PlaneActivity");  
+>  startActivity(intent);  
 > ```
+
+## View坐标系
+
+> ## View自身的坐标
+>
+> > getTop()：获取 View 自身顶边到其父布局顶边的距离。
+> > getLeft()：获取 View 自身左边到其父布局左边的距离。
+> > getRight()：获取 View 自身右边到其父布局左边的距离。
+> > getBottom()：获取 View 自身底边到其父布局顶边的距离。
+> >
+> > getX()：获取点击事件距离控件左边的距离，即视图坐标。
+> > getY()：获取点击事件距离控件顶边的距离，即视图坐标。
+> >
+> > getRawX()：获取点击事件距离整个屏幕左边的距离，即绝对坐标。
+> > getRawY()：获取点击事件距离整个屏幕顶边的距离，即绝对坐标。
+>
+> ## View的滑动
+>
+> > 1. layout方法
+> >
+> >    ```java
+> >    public boolean onTouchEvent(MotionEvent event) {
+> >     		//获取手指触摸点的横坐标和纵坐标
+> >     		int x = (int) event.getX()；
+> >     		int y = (int) event.getY()；
+> >     		switch (event.getAction()) {
+> >     			case MotionEvent.ACTION_DOWN：
+> >     				lastX = x；
+> >     				lastY = y；
+> >     				break；
+> >    			...                
+> >    			case MotionEvent.ACTION_MOVE：
+> >     				//计算移动的距离
+> >     				int offsetX = x - lastX；
+> >     				int offsetY = y - lastY；
+> >     				//调用 layout 方法来重新放置它的位置
+> >     				layout(getLeft()+offsetX, getTop()+offsetY,
+> >     					getRight()+offsetX , getBottom()+offsetY)；
+> >     				break； 
+> >                      
+> >    ```
+> >
+> > 2. `offsetLeftAndRight()`与`offsetTopAndBottom`
+> >
+> >    替换ACTION_MOVE中的代码
+> >
+> >    ```java
+> >     			case MotionEvent.ACTION_MOVE：
+> >     				 //计算移动的距离
+> >     				int offsetX = x - lastX；
+> >     				int offsetY = y - lastY；
+> >     				//对 left 和 right 进行偏移
+> >     				offsetLeftAndRight(offsetX)；
+> >     				//对 top 和 bottom 进行偏移
+> >     				offsetTopAndBottom(offsetY)；
+> >     				break； 
+> >    ```
+> >
+> > 3. `LayoutParams`(改变布局参数)
+> >
+> >    ```java
+> >    LinearLayout.LayoutParams layoutParams= (LinearLayout.LayoutParams)getLayoutParams()；
+> >     	layoutParams.leftMargin = getLeft() + offsetX；
+> >     	layoutParams.topMargin = getTop() + offsetY；
+> >     	setLayoutParams(layoutParams)；
+> >    ```
+> >
+> >    如果父控件是RelativeLayout，则要使用 RelativeLayout.LayoutParams。除了使用布局的 LayoutParams 外，我们还可以用 ViewGroup.MarginLayoutParams 来实现：
+> >
+> >    ```java 
+> >    ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams)getLayoutParams()；
+> >     	layoutParams.leftMargin = getLeft() + offsetX；
+> >     	layoutParams.topMargin = getTop() + offsetY；
+> >     	setLayoutParams(layoutParams)；
+> >    ```
+> >
+> > 4. 动画
+> >
+> >    > **View 动画并不能改变 View 的位置参数**
+> >    >
+> >    > 如果对一个 Button 进行如上的平移动画操作，当 Button 平移 300 像素停留在当前位置时，我们点击这个 Button 并不会触发点击事件，但在我们点击这个 Button 的原始位置时却触发了点击事件。
+> >
+> >    可以采用 View 动画来移动，在 res 目录新建 anim 文件夹并创建 translate.xml：
+> >
+> >    ```xml
+> >    ＜?xml version=＂1.0＂ encoding=＂utf-8＂?＞
+> >    ＜set xmlns：android=＂http：//schemas.android.com/apk/res/android＂
+> >    	android：fillAfter=＂true＂＞//加上fillAfter会停留在当前位置
+> >     ＜translate
+> >     android：duration=＂1000＂
+> >     android：fromXDelta=＂0＂
+> >     android：toXDelta=＂300＂ /＞
+> >    ＜/set＞
+> >    ```
+> >
+> >    接下来在 Java 代码中调用就好了，代码如下所示：
+> >
+> >    ```java 
+> >    mCustomView.setAnimation(AnimationUtils.loadAnimation(this,R.anim.translate));
+> >    ```
+> >
+> > 5. `scrollTo`与`scrollBy`
+> >
+> >    scrollTo(x,y)表示移动到一个具体的坐标点，而 scrollBy(dx,dy)则表示移动的增量为 dx、dy。其中，scollBy 最终也是要调用 scollTo 的。
+> >
+> >    scollTo、scollBy 移动的是 View 的内容，如果在 ViewGroup 中使用，则是移动其所有的子View。我们将 ACTION_MOVE 中的代码替换成如下代码：
+> >
+> >    ```jav
+> >    ((View)getParent()).scrollBy(-offsetX,-offsetY)；
+> >    ```
+> >
+> >    若要实现 CustomView 随手指移动的效果，就需要将偏移量设置为负值。
+> >
+> > 6. `Scroller`
+> >
+> >    Scroller 本身是不能实现 View 的滑动的，它需要与 View 的 computeScroll()方法配合才能实现弹性滑动的效果。
 
