@@ -42,5 +42,12 @@ applicationVariants.all { variant ->
             storePassword 'IM81factory'
         }
     }
+    
+            debug {
+            keyAlias 'platform'
+            keyPassword 'android'
+            storeFile file("platform_userdebug.keystore")
+            storePassword 'android'
+        }
 ```
 

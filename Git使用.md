@@ -71,3 +71,25 @@ https://blog.csdn.net/astonishqft/article/details/83029490
 
 > git checkout -b 本地分支名 origin/远程分支名
 
+## Git版本回退
+
+> git reset --hard 目标版本号
+>
+> Git命令之回退篇 git revert git reset - futureme - 博客园
+> https://www.cnblogs.com/taylorluo/p/10792498.html
+
+## Git切换分支，暂存本地修改的代码
+
+> git branch   查看当前分支
+>
+> git stash  将本地改动暂存到“栈”里面
+>
+> git checkout master  切换到master分支
+>
+> git pull  拉取master分支最新的代码
+>
+> **当我们再想切换回当前的feature分支**
+>
+> git checkout feature  切换回到feature分支
+>
+> git stash pop  再将刚才暂存到“栈”里面的代码取出来，这样就可以继续接着刚才的业务逻辑继续开发了

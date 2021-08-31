@@ -451,10 +451,10 @@ emvicon=(ImageView)findViewById(R.id.emvicon);
 > >    如果父控件是RelativeLayout，则要使用 RelativeLayout.LayoutParams。除了使用布局的 LayoutParams 外，我们还可以用 ViewGroup.MarginLayoutParams 来实现：
 > >
 > >    ```java 
-> >    ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams)getLayoutParams()；
-> >     	layoutParams.leftMargin = getLeft() + offsetX；
-> >     	layoutParams.topMargin = getTop() + offsetY；
-> >     	setLayoutParams(layoutParams)；
+> >    ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams)getLayoutParams();
+> >     	layoutParams.leftMargin = getLeft() + offsetX;
+> >     	layoutParams.topMargin = getTop() + offsetY;
+> >     	setLayoutParams(layoutParams);
 > >    ```
 > >
 > > 4. 动画
@@ -489,7 +489,7 @@ emvicon=(ImageView)findViewById(R.id.emvicon);
 > >    scollTo、scollBy 移动的是 View 的内容，如果在 ViewGroup 中使用，则是移动其所有的子View。我们将 ACTION_MOVE 中的代码替换成如下代码：
 > >
 > >    ```jav
-> >    ((View)getParent()).scrollBy(-offsetX,-offsetY)；
+> >    ((View)getParent()).scrollBy(-offsetX,-offsetY);
 > >    ```
 > >
 > >    若要实现 CustomView 随手指移动的效果，就需要将偏移量设置为负值。
@@ -497,4 +497,108 @@ emvicon=(ImageView)findViewById(R.id.emvicon);
 > > 6. `Scroller`
 > >
 > >    Scroller 本身是不能实现 View 的滑动的，它需要与 View 的 computeScroll()方法配合才能实现弹性滑动的效果。
+
+## 属性动画
+
+1. ObjectAnimator
+
+```java
+ObjectAnimator mObjectAnimator=ObjectAnimator.ofFloat(view,＂translationX＂,200);
+mObjectAnimator.setDuration(300);
+mObjectAnimator.start();
+    ofFloat()代码
+public static ObjectAnimator ofFloat(Object target, String propertyName,float... values) {
+ 	ObjectAnimator anim = new ObjectAnimator(target, propertyName);
+ 	anim.setFloatValues(values);
+ 	return anim;
+}
+```
+
+> 常用的可以直接使用的属性动画的属性值。 
+>
+> • translationX 和 translationY：用来沿着 X 轴或者 Y 轴进行平移。
+> • rotation、rotationX、rotationY：用来围绕 View 的支点进行旋转。
+> • PrivotX 和 PrivotY：控制 View 对象的支点位置，围绕这个支点进行旋转和缩放变换处理。默认该支点位置就是 View 对象的中心点。
+> • alpha：透明度，默认是 1（不透明），0 代表完全透明。
+> • x 和 y：描述 View 对象在其容器中的最终位置。
+
+在使用 ObjectAnimator 的时候，要操作的属性必须要有 get 和 set 方法，不然 ObjectAnimator 就无法生效。如果一个属性没有 get、set 方法，也可以通过自定义一个属性类或包装类来间接地给这个属性增加 get 和 set 方法。
+
+2. ValueAnimator
+
+   ValueAnimator 不提供任何动画效果，它更像一个数值发生器，用来产生有一定规律的数字，从而让调用者控制动画的实现过程。
+
+3. 动画的监听
+
+   完整的动画具有 start、Repeat、End、Cancel 这 4 个过程，代码如下所示：
+
+   ```java
+   ObjectAnimator animator=ObjectAnimator.ofFloat(view,＂alpha＂,1.5f);
+    	animator.addListener(new Animator.AnimatorListener() {
+    		@Override
+    		public void onAnimationStart(Animator animation) {
+    		}
+    		@Override
+    		public void onAnimationEnd(Animator animation) {
+    		}
+    		@Override
+    		public void onAnimationCancel(Animator animation) {
+    		}
+    		@Override
+    		public void onAnimationRepeat(Animator animation) {
+    		}
+    	});
+    }
+   
+   ObjectAnimator animator=ObjectAnimator.ofFloat(view,＂alpha＂,1.5f);
+    	animator.addListener(new AnimatorListenerAdapter() {
+    		@Override
+    		public void onAnimationEnd(Animator animation) {
+    			super.onAnimationEnd(animation)；
+    		}
+    	});
+   ```
+
+4. 组合动画——AnimatorSet
+
+   AnimatorSet.Builder 中包括以下 4 个方法。 
+
+   • after(Animator anim)：将现有动画插入到传入的动画之后执行。
+   • after(long delay)：将现有动画延迟指定毫秒后执行。
+   • before(Animator anim)：将现有动画插入到传入的动画之前执行。
+   • with(Animator anim) ：将现有动画和传入的动画同时执行。
+
+5. 组合动画——PropertyValuesHolder
+
+   使用 PropertyValuesHolder 类只能是多个动画一起执行。
+
+   ~~~java
+   PropertyValuesHolder valuesHolder1 = PropertyValuesHolder.ofFloat(＂scaleX＂, 1.0f, 1.5f);
+   PropertyValuesHolder valuesHolder2 = PropertyValuesHolder.ofFloat(＂rotationX＂, 0.0f, 90.0f, 0.0F);
+   PropertyValuesHolder valuesHolder3 = PropertyValuesHolder.ofFloat(＂alpha＂,1.0f, 0.3f, 1.0F);
+   ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mCustomView, valuesHolder1, valuesHolder2,valuesHolder3);
+   objectAnimator.setDuration(2000).start();
+   ~~~
+
+6. 在XML中使用属性动画
+
+   ~~~java
+   Animator animator=AnimatorInflater.loadAnimator(this,R.animator.scale);
+   animator.setTarget(view);
+   animator.start();
+   ~~~
+
+
+## 自定义View
+
+### 继承系统控件的自定义View
+
+这种自定义 View 在系统控件的基础上进行拓展，一般是添加新的功能或者修改显示的效果，一般情况下在 onDraw()方法中进行处理。
+
+## Activity启动模式
+
+1. standard：标准模式，每次启动一个Activity都会重新创建一个新的实例
+2. singleTop：栈顶复用模式，如果新的Activity已经位于任务栈的栈顶，那么此Activity不会被重新创建
+3. singleTask：栈内复用模式，单实例模式。只要Activity在一个栈中存在，那么多次启动此Activity 都不会重新创建实例，和singleTop一样，系统也会回调其onNewIntent。singleTask默认具有clearTop的效果。
+4. singleInstance：单实例模式，加强的singleTask，具有此模式的Activity只能单独地位于一个任务栈中
 
