@@ -602,3 +602,11 @@ public static ObjectAnimator ofFloat(Object target, String propertyName,float...
 3. singleTask：栈内复用模式，单实例模式。只要Activity在一个栈中存在，那么多次启动此Activity 都不会重新创建实例，和singleTop一样，系统也会回调其onNewIntent。singleTask默认具有clearTop的效果。
 4. singleInstance：单实例模式，加强的singleTask，具有此模式的Activity只能单独地位于一个任务栈中
 
+## Activity的Flags
+
+> **FLAG_ACTIVITY_NEW_TASK**：为Activity指定“singleTask“启动模式，效果和在XML中指定该启动模式相同。 
+>
+> **FLAG_ACTIVITY_SINGLE_TOP**：为Activity指定“singleTop“启动模式，效果和在XML中指定该启动模式相同。
+>
+> **FLAG_ACTIVITY_CLEAR_TOP**：具有此标记位的Activity启动时，在同一个任务栈中所以位于它上面的Activity都要出栈
+
