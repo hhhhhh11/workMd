@@ -71,6 +71,10 @@ https://blog.csdn.net/astonishqft/article/details/83029490
 
 > git checkout -b 本地分支名 origin/远程分支名
 
+git提交
+
+git push origin ssh://gujiawei@192.168.132.70:29418/Android/newland/packages/apps/NlAuthApp HEAD:refs/for/android-9.0
+
 ## Git版本回退
 
 > git reset --hard 目标版本号
@@ -93,3 +97,9 @@ https://blog.csdn.net/astonishqft/article/details/83029490
 > git checkout feature  切换回到feature分支
 >
 > git stash pop  再将刚才暂存到“栈”里面的代码取出来，这样就可以继续接着刚才的业务逻辑继续开发了
+
+
+
+比较两个历史版本之间的差异
+
+  git diff SHA1 SHA2
