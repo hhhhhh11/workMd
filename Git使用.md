@@ -103,3 +103,5 @@ git push origin ssh://gujiawei@192.168.132.70:29418/Android/newland/packages/app
 比较两个历史版本之间的差异
 
   git diff SHA1 SHA2
+
+> This change has merge conflicts. Download the patch and run "git rebase master".Upload a new patchset after resolving all merge conflicts.

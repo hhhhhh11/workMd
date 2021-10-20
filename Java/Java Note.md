@@ -277,3 +277,20 @@ https://www.cnblogs.com/caiyishuai/p/9665732.html
 >   > 3. SynchronousQueue：一个不存储元素的阻塞队列。每个插入操作必须等到另一个线程调用移除操作，否则插入操作一直处于阻塞状态，吞吐量通常要高于LinkedBlockingQueue，静态工厂方法Executors.newCachedThreadPool使用了这个队列。
 >   > 4. PriorityBlockingQueue：一个具有优先级得无限阻塞队列。
 
+## 正则表达式匹配
+
+> ```java
+> //若line含有ttl=53 time=94.9 ms字样,说明已经ping通,返回1,否則返回0.
+> private static int getCheckResult(String line) {
+>     if (line == null){
+>         return 0;
+>     }
+>     Pattern pattern = Pattern.compile("(ttl=[0-9]*)(\\s+)(time=[0-9]*\\.*[0-9]*(\\s+)ms)",  Pattern.CASE_INSENSITIVE);
+>     Matcher matcher = pattern.matcher(line);
+>     while (matcher.find()) {
+>         return 1;
+>     }
+>     return 0;
+> }
+> ```
+

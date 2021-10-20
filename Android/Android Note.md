@@ -371,7 +371,24 @@ emvicon=(ImageView)findViewById(R.id.emvicon);
 >        </receiver>
 >```
 >
->
+
+## 重启/重启BootLoader
+
+> ```java
+> private void reboot() {
+>     PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+>     pm.reboot("");
+> }
+> 
+> private void rebootBootloader() {
+>     PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+>     pm.reboot("bootloader");
+> }
+> ```
+
+## 修改文件权限
+
+> Runtime.getRuntime().exec("chmod 777 " + destFile.getAbsolutePath());
 
 ## 启动其它应用
 
@@ -609,4 +626,12 @@ public static ObjectAnimator ofFloat(Object target, String propertyName,float...
 > **FLAG_ACTIVITY_SINGLE_TOP**：为Activity指定“singleTop“启动模式，效果和在XML中指定该启动模式相同。
 >
 > **FLAG_ACTIVITY_CLEAR_TOP**：具有此标记位的Activity启动时，在同一个任务栈中所以位于它上面的Activity都要出栈
+>
+> ```java
+>                 Intent intent = new Intent(PwdActivity.this, LoginActivity.class);
+>                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+>                 startActivity(intent);
+> ```
+
+
 
