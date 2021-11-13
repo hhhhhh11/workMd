@@ -76,6 +76,16 @@
 > | onStop()    | 当活动不在可见时调用                                         |
 > | onDestroy() | 当活动被系统销毁之前调用                                     |
 > | onRestart() | 当活动被停止以后重新打开时调用                               |
+>
+> 两个activity
+>
+> > activity0  onPause
+> > activity1  onCreate
+> > activity1  onStart
+> > activity1  onResume
+> > activity0  onStop
+
+
 
 ## Fragment
 
